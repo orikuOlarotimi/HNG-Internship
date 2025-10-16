@@ -2,10 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const profileRoutes = require("./routes/profileRoutes");
 const rateLimit = require("express-rate-limit");
-require("dotenv").config(); 
+require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.set("trust proxy", 1);
 
 // Middleware
 app.use(
@@ -23,7 +25,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Routes
-app.use('/', profileRoutes);
+app.use("/", profileRoutes);
 
 // Basic route to check server
 app.get("/", (req, res) => {
@@ -32,6 +34,6 @@ app.get("/", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-    console.log("🚀 Loaded CATFACT_API_URL =", process.env.CATFACT_API_URL);
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log("🚀 Loaded CATFACT_API_URL =", process.env.CATFACT_API_URL);
 });
