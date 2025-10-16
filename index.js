@@ -32,5 +32,6 @@ app.get("/", (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log("🚀 Loaded CATFACT_API_URL =", process.env.CATFACT_API_URL);
 });
